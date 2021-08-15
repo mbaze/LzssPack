@@ -8,8 +8,8 @@ The stream uses byte-aligned markers in order to allow for an efficient implemen
 
 The compressed stream is interpreted as follows (in binary):
 
-<code>CCCCCCC1</code> - Copy the next CCCCCCC + 1 bytes to the output.<br>
-<code>CCCHHHH0 LLLLLLLL</code> - Copy CCC + 3 bytes from the offset -HHHHLLLLLLLL relative to the current output stream position.<br>
+<code>CCCCCCC1</code> - Copy the next <code>CCCCCCC + 1</code> bytes to the output.<br>
+<code>CCCHHHH0 LLLLLLLL</code> - Copy <code>CCC + 3</code> bytes from the offset <code>-HHHHLLLLLLLL</code> relative to the current output stream position.<br>
 <code>00000000 00000000</code> - End of stream marker.
 
 ## Sample Decoder
@@ -17,28 +17,28 @@ The compressed stream is interpreted as follows (in binary):
 The following code is a Zilog Z80 implementation of the decoder (for reversed stream), created by Pavel "Zilog" Cimbal, Milos "Baze" Bazelides, Juraj "Hvge" Durech and Marian "Beetle" Bobrik.
 
 <code>
-Read    xor     a
-        rr      (hl)
-        ld      c,(hl)
-        rrd
-        ld      b,(hl)
-        dec     hl
-        jr      c,Copy
-        ld      c,a
-        or      (hl)
-        ret     z
-        push    hl
-        ld      l,(hl)
-        ld      h,c
-        add     hl,de
-        ld      c,b
-        inc     c
-        inc     c
-Copy    inc     c
-        ld      b,0
-        lddr
-        jr      c,Read
-        pop     hl
-        dec     hl
-        jr      Read
+Read    xor     a<br>
+        rr      (hl)<br>
+        ld      c,(hl)<br>
+        rrd<br>
+        ld      b,(hl)<br>
+        dec     hl<br>
+        jr      c,Copy<br>
+        ld      c,a<br>
+        or      (hl)<br>
+        ret     z<br>
+        push    hl<br>
+        ld      l,(hl)<br>
+        ld      h,c<br>
+        add     hl,de<br>
+        ld      c,b<br>
+        inc     c<br>
+        inc     c<br>
+Copy    inc     c<br>
+        ld      b,0<br>
+        lddr<br>
+        jr      c,Read<br>
+        pop     hl<br>
+        dec     hl<br>
+        jr      Read<br>
 </code>
