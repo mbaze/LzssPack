@@ -8,8 +8,8 @@ The stream uses byte-aligned markers in order to allow for an efficient implemen
 
 The compressed stream is interpreted as follows (in binary):
 
-<code>CCCCCCC1</code> - Copy the next CCCCCCC + 1 bytes to the output.
-<code>CCCHHHH0 LLLLLLLL</code> - Copy CCC + 3 bytes from the offset -HHHHLLLLLLLL relative to the current output stream position.
+<code>CCCCCCC1</code> - Copy the next CCCCCCC + 1 bytes to the output.<br>
+<code>CCCHHHH0 LLLLLLLL</code> - Copy CCC + 3 bytes from the offset -HHHHLLLLLLLL relative to the current output stream position.<br>
 <code>00000000 00000000</code> - End of stream marker.
 
 ## Sample Decoder
