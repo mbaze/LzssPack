@@ -8,15 +8,15 @@ The stream uses byte-aligned markers in order to allow for an efficient implemen
 
 The compressed stream is interpreted as follows (in binary):
 
-`CCCCCCC1</code>` - Copy the next <code>CCCCCCC + 1</code> bytes to the output.<br>
-<code>CCCHHHH0 LLLLLLLL</code> - Copy <code>CCC + 3</code> bytes from the offset <code>-HHHHLLLLLLLL</code> relative to the current output stream position.<br>
-<code>00000000 00000000</code> - End of stream marker.
+`CCCCCCC1` - Copy the next `CCCCCCC + 1` bytes to the output.
+`CCCHHHH0 LLLLLLLL` - Copy `CCC + 3` bytes from the offset `HHHHLLLLLLLL` relative to the current output stream position.<br>
+`00000000 00000000` - End of stream marker.
 
 ## Sample Decoder
 
 The following code is a Zilog Z80 implementation of the decoder (for reversed stream), created by Pavel "Zilog" Cimbal, Milos "Baze" Bazelides, Juraj "Hvge" Durech and Marian "Beetle" Bobrik.
 
-<code>
+```
 Read    xor     a<br>
         rr      (hl)<br>
         ld      c,(hl)<br>
@@ -41,4 +41,4 @@ Copy    inc     c<br>
         pop     hl<br>
         dec     hl<br>
         jr      Read<br>
-</code>
+```
