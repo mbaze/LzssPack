@@ -1,6 +1,6 @@
 ## LzssPack
 
-LzssPack is a simple command line utility primarily meant as a cross-platform packer for retro computing platforms. It uses a simple compression scheme based on Lempel–Ziv–Storer–Szymanski algorithm. The format was originally devised by Pavel "Zilog" Cimbal who used it in his Thrasher for Sinclair ZX Spectrum. Although there are more efficient algorithms even on retro platforms, the method strikes a good balance between compression ratio, decoder simplicity and speed. It is therefore suitable for on-the-fly decompression e.g. during loading.
+LzssPack is a simple command line utility primarily meant as a cross-platform packer for retro computing platforms. It uses a simple compression scheme based on Lempel–Ziv–Storer–Szymanski algorithm. The format was originally devised by Pavel "Zilog" Cimbal who released it as part of Thrasher utility for Sinclair ZX Spectrum. Although there are more efficient compression schemes in use even on vintage platforms, the method strikes a good balance between compression ratio, decoder simplicity and speed. It is therefore suitable for on-the-fly decompression e.g. during loading.
 
 ### Stream Format
 
