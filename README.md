@@ -1,7 +1,7 @@
 # LzssPack
 
 LzssPack is a simple command line packer primarily meant to be used for retro computing projects.
-It uses a simple compression scheme based on Lempel–Ziv–Storer–Szymanski algorithm. The stream
+It uses a simple compression scheme based on Lempelâ€“Zivâ€“Storerâ€“Szymanski algorithm. The stream
 format was originally devised by Pavel "Zilog" Cimbal who used it in his Sinclair ZX Spectrum
 compression utility called Thrasher.
 
@@ -14,7 +14,7 @@ Literals can contain up to 128 bytes. Phrases are up to 10 bytes long with offse
 
 The compressed stream is interpreted as follows (in binary):
 
-CCCCCCC1
+<code>CCCCCCC1</code>
 
 Copy the next CCCCCCC + 1 bytes to the output.
 
