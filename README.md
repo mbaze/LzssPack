@@ -4,7 +4,7 @@ LzssPack is a simple command line utility primarily meant as a cross-platform pa
 
 ### Stream Format
 
-The stream uses byte-aligned markers in order to allow for an efficient implementation of the decoder on 8-bit architectures. There are two types of blocks, literals and offset-length pairs (phrases). Literals can contain up to 128 bytes. Phrases are up to 10 bytes long with offsets ranging from 1 to 4095 bytes.
+The stream uses byte-aligned markers in order to allow for efficient decoder implementation on 8-bit architectures. There are two types of blocks, literals and offset-length pairs (phrases). Literals can contain up to 128 bytes. Phrases are 3 to 10 bytes long with offsets ranging from 1 to 4095 bytes.
 
 The compressed stream is interpreted as follows (in binary):
 
