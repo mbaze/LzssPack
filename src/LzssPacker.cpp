@@ -30,8 +30,8 @@ void FindPhrase(const uint8_t* pInput, uint16_t maxOffset, uint16_t maxSize, uin
 
 void OutputPhrase(uint16_t offset, uint16_t size, std::vector<uint8_t>& outputStream)
 {
-    uint8_t marker0 = (uint8_t) ((size - 3) << 5) | ((offset >> 7) & 0b11110);
-    uint8_t marker1 = (uint8_t) (offset & 0xFF);
+    uint8_t marker0 = static_cast<uint8_t>(((size - 3) << 5) | ((offset >> 7) & 0b11110));
+    uint8_t marker1 = static_cast<uint8_t>(offset & 0xFF);
 
     outputStream.push_back(marker0);
     outputStream.push_back(marker1);
@@ -98,10 +98,10 @@ bool Pack(const uint8_t* pInputStream, size_t inputSize, std::vector<uint8_t>& o
         }
     }
 
-	if (literalSize)
+    if (literalSize)
     {
         OutputLiteral(pCurrentPos - literalSize, literalSize, outputStream);
-	}
+    }
 
     // Add end of stream marker.
 
