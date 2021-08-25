@@ -41,9 +41,11 @@ int main(int argc, char** argv)
     rewind(pInputFile);
 
     std::unique_ptr<uint8_t[]> spInputStream = std::make_unique<uint8_t[]>(inputFileSize);
-    if (fread(spInputStream.get(), 1, inputFileSize, pInputFile) != inputFileSize)
+    size_t bytesRead = fread(spInputStream.get(), 1, inputFileSize, pInputFile);
+    fclose(pInputFile);
+
+    if (bytesRead != inputFileSize)
     {
-        fclose(pInputFile);
         printf(pReadError);
         return 0;
     }
