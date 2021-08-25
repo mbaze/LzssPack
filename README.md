@@ -1,22 +1,22 @@
 ## LzssPack
 
-LzssPack is a simple command line packer with focus on vintage computing platforms. It uses a simple compression scheme based on Lempel–Ziv–Storer–Szymanski algorithm. The format was devised by Pavel "Zilog" Cimbal in 1998 during development of his program Trasher for Sinclair ZX Spectrum. Although there are more efficient compression schemes, it strikes a good balance between compression ratio, decoder simplicity and speed. It is therefore suitable for on-the-fly decompression e.g. during loading.
+LzssPack is a simple command line packer with focus on vintage computing platforms. It uses a simple byte-aligned compression scheme based on Lempel–Ziv–Storer–Szymanski algorithm. The format was devised by Pavel "Zilog" Cimbal in 1998 during development of his program Trasher for Sinclair ZX Spectrum. The compression ratio is decent, though it doesn't really approach the performace of LZSA, ZX2, LzxPack etc. Nevertheless, the format's simplicity makes it occasionally usable for quick on-the-fly decompression.
 
 ### Stream Format
 
-The stream uses byte-aligned markers in order to allow for efficient decoder implementation on 8-bit architectures. There are two types of blocks, literals and offset-length pairs (phrases). Literals can contain up to 128 bytes. Phrases are 3 to 10 bytes long with offsets ranging from 1 to 4095 bytes.
+The stream uses byte-aligned markers in order to allow for efficient decoder implementation on 8-bit architectures. There are two types of blocks, literals and offset-length pairs (phrases). Literals can contain up to 128 bytes. Phrases are 3 to 10 bytes long with offsets ranging from 1 to 4095 bytes. Zero offset indicates end of stream.
 
 The compressed stream is interpreted as follows (in binary):
 
 `CCCCCCC1` - Copy the next `CCCCCCC + 1` bytes to the output.
 
-`CCCHHHH0 LLLLLLLL` - Copy `CCC + 3` bytes from the offset `HHHHLLLLLLLL` relative to the current output stream position.
+`CCCHHHH0 LLLLLLLL` - Copy `CCC + 3` bytes from the offset `HHHHLLLLLLLL` relative to the current output position.
 
-`00000000 00000000` - End of stream marker.
+`00000000 00000000` - End of stream.
 
 ### Sample Decoder
 
-The following code is a Zilog Z80 implementation of the decoder (for reversed stream), created by Pavel "Zilog" Cimbal, Milos "Baze" Bazelides, Juraj "Hvge" Durech and Marian "Beetle" Bobrik.
+The following code is a Zilog Z80 implementation of the decoder (assuming reversed stream), created around the year 2000 by Pavel "Zilog" Cimbal, Milos "Baze" Bazelides, Juraj "Hvge" Durech and Marian "Beetle" Bobrik.
 
 ```
 Read    xor     a
