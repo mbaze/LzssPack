@@ -1,6 +1,6 @@
 ## LzssPack
 
-LzssPack is a simple command line packer with focus on vintage computing platforms. It uses a simple byte-aligned compression scheme based on Lempel–Ziv–Storer–Szymanski algorithm. The format was devised by Pavel "Zilog" Cimbal in 1998 during development of his program Trasher for Sinclair ZX Spectrum. The compression ratio was decent for the time, though it doesn't really match the performace of contemporary utilities like LZSA, ZX2, LzxPack etc. Nevertheless, the format's simplicity makes it occasionally usable for quick on-the-fly decompression.
+LzssPack is a simple command line packer with focus on vintage computing platforms. It uses byte-aligned compression scheme based on Lempel–Ziv–Storer–Szymanski algorithm. The format was devised by Pavel "Zilog" Cimbal in 1998 during development of his program Trasher for Sinclair ZX Spectrum. The compression ratio was decent for the time, though it doesn't really match the performace of contemporary utilities like LZSA, ZX2, LzxPack etc. Nevertheless, the format's simplicity makes it occasionally usable for quick on-the-fly decompression.
 
 ### Stream Format
 
